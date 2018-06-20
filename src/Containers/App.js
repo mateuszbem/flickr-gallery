@@ -8,11 +8,12 @@ class App extends Component {
     this.props.getImages();
   }
   render() {
-    console.log(this.props.images)
-    return (
+    return(
+      
       <div className="container">
         <div className="row">
-          {this.props.images.map((item,index)=>{
+          {this.props.loading?<p>Loading</p>:
+          this.props.images.map((item,index)=>{
            return( <div key={index} className="card" style={{width: "18rem"}}>
               <img className="card-img-top" src={item.url} alt={item.title}/>
               <div className="card-body">
@@ -28,7 +29,8 @@ class App extends Component {
 }
 function mapStateToProps(state){
   return{
-    images: state.reducer.images
+    images: state.reducer.images,
+    loading: state.reducer.loading
   }
 }
 function mapDispatchToProps(dispatch){

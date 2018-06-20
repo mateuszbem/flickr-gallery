@@ -1,6 +1,6 @@
 import axios from 'axios';
 import _ from 'lodash';
-let page = 30;
+let page = 20;
 const apikey = "bc0f58f92aaecfff78981eb319fcca18";
 const urlPhotos = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key="+apikey+"&text=dogs&format=json&nojsoncallback=1&per_page="+page;
 
