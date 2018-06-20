@@ -8,6 +8,7 @@ class App extends Component {
     this.props.getImages();
   }
   render() {
+    console.log(this.props.images)
     return (
       <div className="container">
         <div className="row">
@@ -15,8 +16,8 @@ class App extends Component {
            return( <div key={index} className="card" style={{width: "18rem"}}>
               <img className="card-img-top" src={item.url} alt={item.title}/>
               <div className="card-body">
-                <h5 className="card-title">{item.owner}</h5>
-                <p className="card-text"><small>{item.title}</small></p>
+                <h6 className="card-title">Author: <br/>{item.data.photo.owner.realname}</h6>
+                <p className="card-text"><small>{item.data.photo.description._content}</small></p>
               </div>
             </div>);
           })}
