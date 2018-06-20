@@ -12,6 +12,8 @@ function reducer(state=initState,action){
         return {...state, loading: action.payload}
         case 'GET_IMAGES':
         return {...state, images: action.payload, loading:false}
+        case 'GET_MORE':
+        return {...state, images: action.payload, loading:false}
         default:
             return state;
     }
