@@ -20,10 +20,11 @@ export const getImages= (text="dogs",count=10) => dispatch => {
         })
     }).then(()=>{
         dispatch(getInfo(images))
-        // dispatch({
-        //     type: 'GET_IMAGES',
-        //     payload: images
-        // })
+    }).catch((err)=>{
+        dispatch({
+            type: 'GET_IMAGES_ERROR',
+            payload: err
+        })
     })
 }
 export const getInfo = (images) => dispatch =>{
@@ -46,6 +47,11 @@ export const getInfo = (images) => dispatch =>{
                 type: 'GET_IMAGES',
                 payload: data
             })
+        }).catch((err)=>{
+            dispatch({
+                type: 'GET_IMAGES_ERROR',
+                payload: err
+            })
         })
 }
 export const getMore = (a,text) => dispatch =>{
@@ -61,11 +67,11 @@ export const getMore = (a,text) => dispatch =>{
             })
         })
     }).then(()=>{
-        // return dispatch({
-        //     type: 'GET_MORE',
-        //     payload: a
-        // })
-        console.log(a)
         dispatch(getInfo(a))
+    }).catch((err)=>{
+        dispatch({
+            type: 'GET_MORE_ERROR',
+            payload: err
+        })
     })
 }

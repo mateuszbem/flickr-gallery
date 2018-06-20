@@ -21,9 +21,8 @@ class App extends Component {
       })
   }, 300);
   onScroll = () => {
-    console.log(this.state.text)
     if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 1000) && this.props.images.length) {
-      this.props.getImages(this.state.text,20)
+      this.props.getImages(this.state.text,this.state.count)
       this.setState({count:this.state.count+10})
     }
   }
@@ -35,7 +34,6 @@ class App extends Component {
     window.removeEventListener('scroll', this.onScroll, true);
   }
   render() {
-    console.log(this.state)
     return(
       <div className="container ">
       <h1 className="my-4 text-center text-lg-left">Flickr Gallery</h1>
@@ -47,21 +45,19 @@ class App extends Component {
           }}
         />
         <hr/>
+        {this.props.error?<div className="alert alert-danger"style={{color:'red'}}>{this.props.error.message}</div>:""}
         <div className="row text-center text-lg-left">
           <div className="col-12">
             <div className="card-columns">
-
-
-          {this.props.images.map((item,index)=>{
-          return( <div key={index} className="card">
-              <img className="card-img-top" src={item.url} alt={item.title}/>
-              <div className="card-body">
-                <h6 className="card-title">Author: <br/>{item.data.photo.owner.realname}</h6>
-                <p className="card-text"><small>{item.data.photo.description._content}</small></p>
-              </div>
-            </div>);
-          })}
-
+            {this.props.images.map((item,index)=>{
+            return( <div key={index} className="card">
+                <img className="card-img-top" src={item.url} alt={item.title}/>
+                <div className="card-body">
+                  <h6 className="card-title">Author: <br/>{item.data.photo.owner.realname}</h6>
+                  <p className="card-text"><small>{item.data.photo.description._content}</small></p>
+                </div>
+              </div>);
+            })}
             </div>
             {this.props.loading?
           <div style={{position:"absolute", top: 'window.innerHeight-200',left: 'calc(50% - 4em)'}}><CircularProgress  size={50} /></div>
@@ -75,7 +71,8 @@ class App extends Component {
 function mapStateToProps(state){
   return{
     images: state.reducer.images,
-    loading: state.reducer.loading
+    loading: state.reducer.loading,
+    error: state.reducer.error
   }
 }
 function mapDispatchToProps(dispatch){
