@@ -20,11 +20,6 @@ export const getImages= (text="dogs",count=10) => dispatch => {
         })
     }).then(()=>{
         dispatch(getInfo(images))
-    }).catch((err)=>{
-        dispatch({
-            type: 'GET_IMAGES_ERROR',
-            payload: err
-        })
     })
 }
 export const getInfo = (images) => dispatch =>{

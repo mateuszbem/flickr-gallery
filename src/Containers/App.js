@@ -38,7 +38,6 @@ class App extends Component {
       <div className="container ">
       <h1 className="my-4 text-center text-lg-left">Flickr Gallery</h1>
         <SearchBar
-        value={this.state.text}
           onChange={(e)=>this.onChange(e)}
           style={{
             margin: '0 auto'
