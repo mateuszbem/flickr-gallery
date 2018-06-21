@@ -68,14 +68,14 @@ class App extends Component {
     );
   }
 }
-function mapStateToProps(state){
+const mapStateToProps = (state)=>{
   return{
     images: state.reducer.images,
     loading: state.reducer.loading,
     error: state.reducer.error
   }
 }
-function mapDispatchToProps(dispatch){
+const mapDispatchToProps = (dispatch)=>{
   return bindActionCreators({
     getImages,getMore
   },dispatch)

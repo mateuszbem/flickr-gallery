@@ -6,7 +6,6 @@ import {createStore,applyMiddleware} from 'redux'
 import Reducers from './Reducers/Reducers';
 import App from './Containers/App';
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import promiseMiddleware from 'redux-promise';
 import thunk from 'redux-thunk'
 import logger from 'redux-logger'
 

@@ -1,6 +1,4 @@
 import axios from 'axios';
-import _ from 'lodash';
-let page = 20;
 const apikey = "bc0f58f92aaecfff78981eb319fcca18";
 
 
