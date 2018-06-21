@@ -28,7 +28,7 @@ class App extends Component {
   }
   componentDidMount(){
     this.props.getImages(this.state.text,this.state.count);
-    window.addEventListener('scroll', _.debounce(this.onScroll,2000), false);
+    window.addEventListener('scroll', _.throttle(this.onScroll,500), false);
   }
   componentWillUnmount() {
     window.removeEventListener('scroll', this.onScroll, true);
